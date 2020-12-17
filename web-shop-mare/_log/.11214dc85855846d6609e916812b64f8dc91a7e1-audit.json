@@ -1,0 +1,29 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 7
+    },
+    "auditLog": "C:\\Projects\\node\\matf-kurs-js\\web-shop-mare\\_log\\.11214dc85855846d6609e916812b64f8dc91a7e1-audit.json",
+    "files": [
+        {
+            "date": 1607883861680,
+            "name": "C:\\Projects\\node\\matf-kurs-js\\web-shop-mare\\_log\\webshop-ts-backend2020-12-13.log",
+            "hash": "393fccf77663b22f6768bd60b58a4150"
+        },
+        {
+            "date": 1607956501761,
+            "name": "C:\\Projects\\node\\matf-kurs-js\\web-shop-mare\\_log\\webshop-ts-backend2020-12-14.log",
+            "hash": "808620bbce2fc8888183460dfb57dc18"
+        },
+        {
+            "date": 1608063963679,
+            "name": "C:\\Projects\\node\\matf-kurs-js\\web-shop-mare\\_log\\webshop-ts-backend2020-12-15.log",
+            "hash": "acd30d872cf05955aacb8b924324b4b6"
+        },
+        {
+            "date": 1608214896240,
+            "name": "C:\\Projects\\node\\matf-kurs-js\\web-shop-mare\\_log\\webshop-ts-backend2020-12-17.log",
+            "hash": "d183f7d45d21ba8580b328cc928ac74c"
+        }
+    ]
+}

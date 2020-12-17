@@ -1,0 +1,10 @@
+2020-12-17T14:21:36.251Z INFO [1504] Server listening on port: 3830
+2020-12-17T14:21:38.293Z ERROR [1504] failed to connect to server [localhost:27017] on first connect [Error: connect ECONNREFUSED 127.0.0.1:27017
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1141:16) {
+  name: 'MongoNetworkError'
+}]
+2020-12-17T14:21:43.594Z INFO [3596] Server listening on port: 3830
+2020-12-17T14:21:45.745Z ERROR [3596] failed to connect to server [localhost:27017] on first connect [Error: connect ECONNREFUSED 127.0.0.1:27017
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1141:16) {
+  name: 'MongoNetworkError'
+}]

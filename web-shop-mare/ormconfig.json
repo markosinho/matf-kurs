@@ -1,0 +1,15 @@
+{
+    "type": "mongodb",
+    "host": "localhost",
+    "database": "webshop",
+    "username": "root",
+    "password": "example",
+    "synchronize": true,
+    "logging": false,
+    "entities": [
+        "build/entities/*.js"
+    ],
+    "extra": {
+        "authSource": "admin"
+    }
+}
