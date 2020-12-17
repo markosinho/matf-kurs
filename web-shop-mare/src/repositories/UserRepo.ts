@@ -28,6 +28,13 @@ export class UserRepo {
     }
 
     public async findAll() {
-        return this.connection.mongoManager.find(UserEntity);
+        let allUsers;
+        try {
+            allUsers = await this.connection.mongoManager.find(UserEntity);
+        } catch (err) {
+            winston.error('wtf');
+            winston.error(err.stack);
+        }
+        return allUsers;
     }
 }

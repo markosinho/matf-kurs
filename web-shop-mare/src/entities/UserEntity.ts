@@ -1,7 +1,7 @@
 import {Entity, PrimaryGeneratedColumn, Column, ObjectIdColumn, ObjectID, Index} from 'typeorm';
-import {UserType} from './UserType';
+import {UserType} from '../enums/UserType';
 
-interface IUserEntity {
+export interface IUserEntity {
     _id: ObjectID;
     email: string;
     userName: string;

@@ -1,5 +1,5 @@
 import { json } from 'body-parser';
-import express from 'express';
+import { Request, Response, NextFunction } from 'express';
 import {ObjectID} from 'typeorm';
 import {UserEntity} from '../entities/UserEntity';
 import {UserRepo} from '../repositories/UserRepo';
@@ -17,7 +17,7 @@ export class UserController {
         this.userService = userService;
     }
 
-    public async loginUser(req: express.Request, res: express.Response, next: express.NextFunction) {
+    public async loginUser(req: Request, res: Response, next: NextFunction) {
         winston.info(`Login user | ${JSON.stringify(req.body)}`);
         if (!req.body) {
             res.status(400).send();
@@ -46,7 +46,7 @@ export class UserController {
         }
     }
 
-    public async createUser(req: express.Request, res: express.Response) {
+    public async createUser(req: Request, res: Response) {
         // Log request
         winston.info(`Create user | ${JSON.stringify(req.body)}`);
 
@@ -101,25 +101,25 @@ export class UserController {
         }
     }
 
-    public async getUserByUsername(req: express.Request, res: express.Response) {
+    public async getUserByUsername(req: Request, res: Response) {
         winston.info(`Get user by username: ${JSON.stringify(req.params)}`);
         
         let serviceResponse;
         try {
             serviceResponse = await this.userService.findByUserName(req.params.username);
-            res.status(200).send(req.body.user);
+            res.status(200).send(req.user);
         } catch (err) {
             winston.error(`User not found, ${err.stack}`);
             res.status(404).send();
         }
     }
 
-    public async getMe(req: express.Request, res: express.Response) {
+    public async getMe(req: Request, res: Response) {
         winston.info(`Get me request`);
-        res.status(200).send(req.body.user);
+        res.status(200).send(req.user);
     }
 
-    public async confirmUserRegistration(req: express.Request, res: express.Response) {
+    public async confirmUserRegistration(req: Request, res: Response) {
         winston.info(`Confirm registration: ${JSON.stringify(req.query)}`);
 
         let serviceResponse;
@@ -137,6 +137,16 @@ export class UserController {
         } catch (err) {
             winston.error(`Failed to confirm registration`);
             res.status(400).send();
+        }
+    }
+
+    public async getAllUsers(req: Request, res: Response) {
+        try {
+            const allUsers = await this.userService.findAll();
+            res.status(200).send(allUsers);
+        } catch (err) {
+            winston.error(`Failed to get all useers`);
+            res.status(500).send();
         }
     }
 }

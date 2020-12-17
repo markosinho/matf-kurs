@@ -1,4 +1,4 @@
-import { UserEntity } from '../entities/UserEntity';
+import { IUserEntity, UserEntity } from '../entities/UserEntity';
 import { UserRepo } from '../repositories/UserRepo';
 
 export class UserService {

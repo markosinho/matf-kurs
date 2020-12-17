@@ -11,6 +11,7 @@ import { Logger } from './utils/Logger';
 import { Connection, createConnection } from 'typeorm';
 import winston from 'winston';
 import { Authentication } from './middleware/Authentication';
+import { Authorization } from './middleware/Authorization';
 
 
 class App {
@@ -54,10 +55,11 @@ class App {
     private initRouters(connection: Connection) {
 
         const userService = new UserService(new UserRepo(connection));
-        const authMiddleware = new Authentication(userService);
+        const authenticationService = new Authentication(userService);
+        const authorizationService = new Authorization(userService);
 
         const userControler = new UserController(userService);
-        const userRouter = new UserRouter(userControler, authMiddleware);
+        const userRouter = new UserRouter(userControler, authenticationService, authorizationService);
         
         this.server.use(userRouter.getRouter());
     }

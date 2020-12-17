@@ -1,5 +1,5 @@
 import { UserService } from '../services/UserService';
-import express from 'express';
+import { Request, Response, NextFunction } from 'express';
 import {Security} from '../utils/Security';
 import winston from 'winston';
 import jwt from 'jsonwebtoken';
@@ -12,7 +12,7 @@ export class Authentication {
         this.userService = userService;
     }
 
-    public async authenticate(req: express.Request, res: express.Response, next: express.NextFunction) {
+    public async authenticate(req: Request, res: Response, next: NextFunction) {
         const authToken = req.header('Authorization');
         if (typeof authToken !== 'string') {
             winston.info(`Unauthorized request atempt from ${req.ip}`);
@@ -25,7 +25,7 @@ export class Authentication {
             // If fail throws invalid signature error
             const decoded = jwt.verify(authToken.replace('Bearer ', '').trim(), Security.secret) as { _id: string };
             const user = await this.userService.findByUserId(decoded['_id'].toString());
-            req.body.user = user;
+            req.user = user;
             next();
         } catch (err) {
             winston.error(`Authentication failed: ${err.stack}`);
