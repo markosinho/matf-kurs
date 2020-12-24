@@ -12,6 +12,21 @@ import { Connection, createConnection } from 'typeorm';
 import winston from 'winston';
 import { Authentication } from './middleware/Authentication';
 import { Authorization } from './middleware/Authorization';
+import * as cors from 'cors';
+
+// const corsOptions: cors.CorsOptions = {
+//     allowedHeaders: [
+//         'Origin',
+//         'X-Requested-With',
+//         'Content-Type',
+//         'Accept',
+//         'X-Access-Token',
+//       ],
+//       credentials: true,
+//       methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+//       origin: 'ts',
+//       preflightContinue: false,
+// }
 
 
 class App {
@@ -50,6 +65,7 @@ class App {
         
         this.server.use(bodyparser.json());
         this.server.use(bodyparser.urlencoded({ extended: true }));
+        this.server.use(cors.default());
     }
 
     private initRouters(connection: Connection) {

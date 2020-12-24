@@ -141,6 +141,7 @@ export class UserController {
     }
 
     public async getAllUsers(req: Request, res: Response) {
+        winston.info('Get all users');
         try {
             const allUsers = await this.userService.findAll();
             res.status(200).send(allUsers);

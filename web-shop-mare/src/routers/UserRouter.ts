@@ -31,8 +31,8 @@ export class UserRouter {
         this.router.get('/user/me', authenticationService.authenticate.bind(authenticationService),
             controller.getMe.bind(controller));
 
-        this.router.get('/users/all', authenticationService.authenticate.bind(authenticationService),
-            authorizationService.authorize.bind(authorizationService),
+        this.router.get('/users/all', // authenticationService.authenticate.bind(authenticationService),
+            // authorizationService.authorize.bind(authorizationService),
             controller.getAllUsers.bind(controller));
 
         this.router.get('/user/:username', authenticationService.authenticate.bind(authenticationService), 
