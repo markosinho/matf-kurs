@@ -6,24 +6,29 @@
     "auditLog": "C:\\Projects\\node\\matf-kurs-js\\web-shop-mare\\_log\\.11214dc85855846d6609e916812b64f8dc91a7e1-audit.json",
     "files": [
         {
-            "date": 1607883861680,
-            "name": "C:\\Projects\\node\\matf-kurs-js\\web-shop-mare\\_log\\webshop-ts-backend2020-12-13.log",
-            "hash": "393fccf77663b22f6768bd60b58a4150"
+            "date": 1608487079129,
+            "name": "C:\\Projects\\node\\matf-kurs-js\\web-shop-mare\\_log\\webshop-ts-backend2020-12-20.log",
+            "hash": "5103e04640724375aa2d84e41d1ec95a"
         },
         {
-            "date": 1607956501761,
-            "name": "C:\\Projects\\node\\matf-kurs-js\\web-shop-mare\\_log\\webshop-ts-backend2020-12-14.log",
-            "hash": "808620bbce2fc8888183460dfb57dc18"
+            "date": 1608506867044,
+            "name": "C:\\Projects\\node\\matf-kurs-js\\web-shop-mare\\_log\\webshop-ts-backend2020-12-21.log",
+            "hash": "48aa723a86976203e3139ffc7dfdb508"
         },
         {
-            "date": 1608063963679,
-            "name": "C:\\Projects\\node\\matf-kurs-js\\web-shop-mare\\_log\\webshop-ts-backend2020-12-15.log",
-            "hash": "acd30d872cf05955aacb8b924324b4b6"
+            "date": 1608824271528,
+            "name": "C:\\Projects\\node\\matf-kurs-js\\web-shop-mare\\_log\\webshop-ts-backend2020-12-24.log",
+            "hash": "1ca657e19dba86f80b99ca5b0b867fbb"
         },
         {
-            "date": 1608214896240,
-            "name": "C:\\Projects\\node\\matf-kurs-js\\web-shop-mare\\_log\\webshop-ts-backend2020-12-17.log",
-            "hash": "d183f7d45d21ba8580b328cc928ac74c"
+            "date": 1608882633300,
+            "name": "C:\\Projects\\node\\matf-kurs-js\\web-shop-mare\\_log\\webshop-ts-backend2020-12-25.log",
+            "hash": "1e259f8199ebc706b42d71f24939189d"
+        },
+        {
+            "date": 1608937238725,
+            "name": "C:\\Projects\\node\\matf-kurs-js\\web-shop-mare\\_log\\webshop-ts-backend2020-12-26.log",
+            "hash": "1318a2834e4098eb19bb7a42a06d4c45"
         }
     ]
 }

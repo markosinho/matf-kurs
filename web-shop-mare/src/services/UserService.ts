@@ -36,4 +36,8 @@ export class UserService {
     public async findAll() {
         return this.userRepo.findAll();
     }
+
+    public async deleteByUserName(userName: string) {
+        return this.userRepo.deleteByUserName(userName);
+    }
 }

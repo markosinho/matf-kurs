@@ -46,7 +46,7 @@ export class UserRouter {
 
         // this.router.patch('/user', this.userController.updateUser);
 
-        // this.router.delete('/user/:id', async (req, res) => {});
+        this.router.delete('/user/:username', controller.deleteUser.bind(controller));
     }
 
     public getRouter() : Router {

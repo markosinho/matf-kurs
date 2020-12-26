@@ -150,4 +150,17 @@ export class UserController {
             res.status(500).send();
         }
     }
+
+    public async deleteUser(req: Request, res: Response) {
+        winston.info(`Delete user by username: ${JSON.stringify(req.params)}`);
+        
+        let serviceResponse;
+        try {
+            serviceResponse = await this.userService.deleteByUserName(req.params.username);
+            res.status(200).send(req.user);
+        } catch (err) {
+            winston.error(`User not found, ${err.stack}`);
+            res.status(404).send();
+        }
+    }
 }

@@ -17,6 +17,10 @@ export class UserRepo {
         return this.connection.mongoManager.findOne(UserEntity, {userName});
     }
 
+    public async deleteByUserName(userName: string) {
+        return this.connection.mongoManager.deleteOne(UserEntity, {userName});
+    }
+
     public async findById(userId: string) {
         let user;
         try {
