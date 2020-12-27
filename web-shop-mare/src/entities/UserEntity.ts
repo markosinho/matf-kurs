@@ -1,5 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column, ObjectIdColumn, ObjectID, Index} from 'typeorm';
-import {UserType} from '../enums/UserType';
+import { Entity, Column, ObjectIdColumn, ObjectID, Index } from 'typeorm';
+import { UserType } from '../enums/UserType';
 
 export interface IUserEntity {
     _id: ObjectID;
@@ -19,6 +19,7 @@ export class UserEntity implements IUserEntity {
     _id!: ObjectID;
 
     @Column()
+    @Index({ unique: true })
     email!: string;
 
     @Column()

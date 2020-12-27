@@ -1,0 +1,14 @@
+{
+    "users": [
+        
+    ],
+    "products": [
+        {
+            "codename": "work-desk",
+            "title": "Work desk",
+            "description": "Stable work space with metal construction and wood topping",
+            "price": 220,
+            "category": 14
+        }
+    ]
+}

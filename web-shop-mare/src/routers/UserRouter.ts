@@ -47,6 +47,8 @@ export class UserRouter {
         // this.router.patch('/user', this.userController.updateUser);
 
         this.router.delete('/user/:username', controller.deleteUser.bind(controller));
+
+        this.router.patch('/user/:username/type/:newType', controller.updateUserType.bind(controller));
     }
 
     public getRouter() : Router {

@@ -1,14 +1,15 @@
-import { json } from 'body-parser';
+
 import { Request, Response, NextFunction } from 'express';
-import {ObjectID} from 'typeorm';
+
 import {UserEntity} from '../entities/UserEntity';
-import {UserRepo} from '../repositories/UserRepo';
+
 import {UserService} from '../services/UserService';
-import {Connection} from 'typeorm';
+
 import winston from 'winston';
 import bcrypt from 'bcrypt';
 import {Security} from '../utils/Security';
 import jwt from 'jsonwebtoken';
+import { UserType } from '../enums/UserType';
 
 export class UserController {
     private userService: UserService;
@@ -161,6 +162,36 @@ export class UserController {
         } catch (err) {
             winston.error(`User not found, ${err.stack}`);
             res.status(404).send();
+        }
+    }
+
+    public async updateUserType(req: Request, res: Response) {
+        winston.info(`Update user type by username: ${JSON.stringify(req.params)}`);
+
+        let serviceResponse;
+        try {
+            const user = await this.userService.findByUserName(req.params.username);
+            if (!user) {
+                winston.error(`User not found, ${req.params.username}`);
+                res.status(404).send();
+                return;
+            }
+
+            switch (req.params.newType) {
+                case 'SALES':
+                    user.userType = UserType.SALES;
+                    break;
+                case 'CUSTOMER':
+                    user.userType = UserType.CUSTOMER;
+                    break;
+                default:
+            }
+
+            serviceResponse = await this.userService.save(user);
+            res.status(200).send();
+        } catch (err) {
+            winston.error(`User not found, ${err.stack}`);
+            res.status(400).send();
         }
     }
 }

@@ -13,6 +13,10 @@ import winston from 'winston';
 import { Authentication } from './middleware/Authentication';
 import { Authorization } from './middleware/Authorization';
 import * as cors from 'cors';
+import { ProductController } from './controllers/ProductController';
+import { ProductRepo } from './repositories/ProductRepo';
+import { ProductService } from './services/ProductService';
+import { ProductRouter } from './routers/ProductRouter';
 
 // const corsOptions: cors.CorsOptions = {
 //     allowedHeaders: [
@@ -69,15 +73,19 @@ class App {
     }
 
     private initRouters(connection: Connection) {
-
+        
         const userService = new UserService(new UserRepo(connection));
         const authenticationService = new Authentication(userService);
-        const authorizationService = new Authorization(userService);
-
+        const authorizationService = new Authorization(userService);        
         const userControler = new UserController(userService);
         const userRouter = new UserRouter(userControler, authenticationService, authorizationService);
-        
+
+        const productService = new ProductService(new ProductRepo(connection));
+        const productController = new ProductController(productService);
+        const productRouter = new ProductRouter(productController, authenticationService, authorizationService);
+
         this.server.use(userRouter.getRouter());
+        this.server.use(productRouter.getRouter());
     }
 
     public start() {
