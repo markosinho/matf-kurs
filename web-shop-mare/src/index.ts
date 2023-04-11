@@ -35,7 +35,7 @@ import { ProductRouter } from './routers/ProductRouter';
 
 class App {
     private server: express.Application;
-    private port: number;
+    private readonly port: number;
 
     constructor(port: number) {
         this.server = express();
@@ -77,8 +77,8 @@ class App {
         const userService = new UserService(new UserRepo(connection));
         const authenticationService = new Authentication(userService);
         const authorizationService = new Authorization(userService);        
-        const userControler = new UserController(userService);
-        const userRouter = new UserRouter(userControler, authenticationService, authorizationService);
+        const userController = new UserController(userService);
+        const userRouter = new UserRouter(userController, authenticationService, authorizationService);
 
         const productService = new ProductService(new ProductRepo(connection));
         const productController = new ProductController(productService);
