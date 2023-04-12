@@ -81,7 +81,7 @@ const createDir = async (path: string) => {
     // Check if log directory already exists
     try {
         await fileStat(path);
-    } catch (err) {
+    } catch (err: any) {
         if (err.code === 'ENOENT') {
             // Create log directory if it doesn't exist
             await mkdir(path, {recursive: true});

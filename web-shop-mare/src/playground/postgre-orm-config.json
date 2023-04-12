@@ -1,0 +1,19 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "3426LiveFeed!",
+  "database": "matf-kurs",
+  "synchronize": true,
+  "entities": [
+    "build/entities/*.js"
+  ],
+  "extra": {
+    "authSource": "admin"
+  },
+  "migrations": ["target/migrations/*.js"],
+  "cli": {
+    "migrationsDir": "src/migrations"
+  }
+}

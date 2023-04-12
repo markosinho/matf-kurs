@@ -1,11 +1,12 @@
 import {UserEntity} from '../entities/UserEntity';
 import {Connection, ObjectID} from 'typeorm';
 import winston from 'winston'
+import {ConnectionMock} from "./ConnectionMock";
 
 export class UserRepo {
-    private connection: Connection;
+    private connection: ConnectionMock;
 
-    constructor(connection: Connection) {
+    constructor(connection: ConnectionMock) {
         this.connection = connection;
     }
 
@@ -25,7 +26,7 @@ export class UserRepo {
         let user;
         try {
             user = await this.connection.mongoManager.findOne(UserEntity, userId);
-        } catch (err) {
+        } catch (err: any) {
             winston.error(err.stack);
         }
         return user;
@@ -35,8 +36,7 @@ export class UserRepo {
         let allUsers;
         try {
             allUsers = await this.connection.mongoManager.find(UserEntity);
-        } catch (err) {
-            winston.error('wtf');
+        } catch (err: any) {
             winston.error(err.stack);
         }
         return allUsers;

@@ -4,7 +4,7 @@
   "description": "Levi9-Matf javascript course 2020 - venture",
   "main": "index.js",
   "scripts": {
-    "build": "node_modules/.bin/rimraf build && tsc --watch",
+    "build": "rimraf build && tsc --watch",
     "start": "nodemon build/index.js"
   },
   "repository": {

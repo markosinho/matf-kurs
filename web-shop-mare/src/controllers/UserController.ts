@@ -41,7 +41,7 @@ export class UserController {
             } else {
                 res.status(404).send();
             }
-        } catch (err) {
+        } catch (err: any) {
             winston.error(`Fetching user failed: ${err.stack}`);
             res.status(500).send();
         }
@@ -60,7 +60,7 @@ export class UserController {
             if (userExists) {
                 res.status(400).send(`User ${req.body.userName} exists`);
             }
-        } catch (err) {
+        } catch (err: any) {
             winston.error(`Fetching user failed`);
         }
 
@@ -96,7 +96,7 @@ export class UserController {
             }
 
             res.status(201).send(response);
-        } catch (err) {
+        } catch (err: any) {
             winston.error(`Failed to create user: ${err.stack}`);
             res.status(500).send();
         }
@@ -109,7 +109,7 @@ export class UserController {
         try {
             serviceResponse = await this.userService.findByUserName(req.params.username);
             res.status(200).send(req.user);
-        } catch (err) {
+        } catch (err: any) {
             winston.error(`User not found, ${err.stack}`);
             res.status(404).send();
         }
@@ -129,13 +129,15 @@ export class UserController {
             const userName = queryParams.userName;
             const registrationToken = queryParams.registrationToken;
             serviceResponse = await this.userService.confirmRegistration(userName, registrationToken);
+            // @ts-ignore
             if (serviceResponse?.registrationConfirmed) {
+                // @ts-ignore
                 winston.info(`Registration confirmed for user: ${serviceResponse.userName}`);
                 res.status(200).send();
             } else {
                 res.status(400).send();
             }
-        } catch (err) {
+        } catch (err: any) {
             winston.error(`Failed to confirm registration`);
             res.status(400).send();
         }
@@ -146,7 +148,7 @@ export class UserController {
         try {
             const allUsers = await this.userService.findAll();
             res.status(200).send(allUsers);
-        } catch (err) {
+        } catch (err: any) {
             winston.error(`Failed to get all useers`);
             res.status(500).send();
         }
@@ -159,7 +161,7 @@ export class UserController {
         try {
             serviceResponse = await this.userService.deleteByUserName(req.params.username);
             res.status(200).send(req.user);
-        } catch (err) {
+        } catch (err: any) {
             winston.error(`User not found, ${err.stack}`);
             res.status(404).send();
         }
@@ -189,7 +191,7 @@ export class UserController {
 
             serviceResponse = await this.userService.save(user);
             res.status(200).send();
-        } catch (err) {
+        } catch (err: any) {
             winston.error(`User not found, ${err.stack}`);
             res.status(400).send();
         }

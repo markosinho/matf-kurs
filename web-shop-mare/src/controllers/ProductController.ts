@@ -31,7 +31,7 @@ export class ProductController {
             if (productExists) {
                 res.status(400).send(`Product ${req.body.title} exists`);
             }
-        } catch (err) {
+        } catch (err: any) {
             winston.error(`Fetching product failed`);
         }
 
@@ -53,7 +53,7 @@ export class ProductController {
             }
 
             res.status(201).send(response);
-        } catch (err) {
+        } catch (err: any) {
             winston.error(`Failed to create product: ${err.stack}`);
             res.status(500).send();
         }
@@ -64,7 +64,7 @@ export class ProductController {
         try {
             const allProducts = await this.productService.findAll();
             res.status(200).send(allProducts);
-        } catch (err) {
+        } catch (err: any) {
             winston.error(`Failed to get all products`);
             res.status(500).send();
         }
@@ -77,7 +77,7 @@ export class ProductController {
         try {
             serviceResponse = await this.productService.findByCodename(req.params.codename);
             res.status(200).send(serviceResponse);
-        } catch (err) {
+        } catch (err: any) {
             winston.error(`Product not found, ${err.stack}`);
             res.status(404).send();
         }
@@ -90,7 +90,7 @@ export class ProductController {
         try {
             serviceResponse = await this.productService.deleteByCodename(req.params.codename);
             res.status(200).send();
-        } catch (err) {
+        } catch (err: any) {
             winston.error(`Product not found, ${err.stack}`);
             res.status(404).send();
         }
@@ -112,7 +112,7 @@ export class ProductController {
 
             serviceResponse = await this.productService.save(product);
             res.status(200).send();
-        } catch (err) {
+        } catch (err: any) {
             winston.error(`Product not found, ${err.stack}`);
             res.status(400).send();
         }
@@ -134,7 +134,7 @@ export class ProductController {
 
             serviceResponse = await this.productService.save(product);
             res.status(200).send();
-        } catch (err) {
+        } catch (err: any) {
             winston.error(`Product not found, ${err.stack}`);
             res.status(400).send();
         }
@@ -156,7 +156,7 @@ export class ProductController {
 
             serviceResponse = await this.productService.save(product);
             res.status(200).send();
-        } catch (err) {
+        } catch (err: any) {
             winston.error(`Product not found, ${err.stack}`);
             res.status(400).send();
         }

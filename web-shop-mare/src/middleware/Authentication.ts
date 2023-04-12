@@ -27,7 +27,7 @@ export class Authentication {
             const user = await this.userService.findByUserId(decoded['_id'].toString());
             req.user = user;
             next();
-        } catch (err) {
+        } catch (err: any) {
             winston.error(`Authentication failed: ${err.stack}`);
             res.status(401).send();
         }

@@ -1,11 +1,12 @@
 import { ProductEntity } from '../entities/ProductEntity';
 import { Connection } from 'typeorm';
 import winston from 'winston'
+import {ConnectionMock} from "./ConnectionMock";
 
 export class ProductRepo {
-    private connection: Connection;
+    private connection: ConnectionMock;
 
-    constructor(connection: Connection) {
+    constructor(connection: ConnectionMock) {
         this.connection = connection;
     }
 
@@ -33,7 +34,7 @@ export class ProductRepo {
         let product;
         try {
             product = await this.connection.mongoManager.findOne(ProductEntity, productId);
-        } catch (err) {
+        } catch (err: any) {
             winston.error(err.stack);
         }
         return product;
@@ -43,7 +44,7 @@ export class ProductRepo {
         let allUsers;
         try {
             allUsers = await this.connection.mongoManager.find(ProductEntity);
-        } catch (err) {
+        } catch (err: any) {
             winston.error('wtf');
             winston.error(err.stack);
         }

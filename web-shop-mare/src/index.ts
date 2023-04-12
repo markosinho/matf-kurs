@@ -17,6 +17,7 @@ import { ProductController } from './controllers/ProductController';
 import { ProductRepo } from './repositories/ProductRepo';
 import { ProductService } from './services/ProductService';
 import { ProductRouter } from './routers/ProductRouter';
+import {ConnectionMock} from "./repositories/ConnectionMock";
 
 // const corsOptions: cors.CorsOptions = {
 //     allowedHeaders: [
@@ -56,10 +57,11 @@ class App {
 
     private async initDatabase() {
         try {
-            const connection : Connection = await createConnection();
+            // const connection : Connection = await createConnection();
+            const connection : ConnectionMock = new ConnectionMock();
             winston.debug(`Connected to database: ${connection.isConnected}`);
             return connection;
-        } catch (err) {
+        } catch (err: any) {
             winston.error(err);
             throw new Error('No database connection');
         }
@@ -72,7 +74,7 @@ class App {
         this.server.use(cors.default());
     }
 
-    private initRouters(connection: Connection) {
+    private initRouters(connection: ConnectionMock) {
         
         const userService = new UserService(new UserRepo(connection));
         const authenticationService = new Authentication(userService);
